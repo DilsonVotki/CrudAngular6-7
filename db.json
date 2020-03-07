@@ -1,0 +1,22 @@
+{
+  "pessoas": [
+    {
+      "id": 1,
+      "nome": "Dilson Votki",
+      "idade": "33",
+      "email": "dilson.votki@teste.com"
+    },
+    {
+      "id": 2,
+      "idade": "60",
+      "nome": "João das Neves",
+      "email": "joao.neves@teste"
+    },
+    {
+      "id": "3",
+      "idade": "60",
+      "nome": "Pedro Broca",
+      "email": "Pedro@broca"
+    }
+  ]
+}

@@ -1,20 +1,98 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <div class="row col-md12 col-md-offset-2 custyle">
+    <table class="table table-strip custab">
+      <thead>
+        <button (click)="adicionarPessoa()" class="btn btn-primary btn-xs pull-left">
+          Adicionar Pessoas
+        </button>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Email</th>
+          <th class="text-center">Ação</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let pessoa of pessoaLista">
+        <th>{{pessoa.id}}</th>
+        <th>{{pessoa.nome}}</th>
+        <th>{{pessoa.idade}}</th>
+        <th>{{pessoa.email}}</th>
+        <th class="text-center"><button class="btn btn-info btn-xs" (click)="editarPessoa(pessoa)">Editar</button></th>
+        <th class="text-center"><button class="btn btn-danger btn-xs" (click)="removerPessoa(pessoa.id)">Remover</button></th>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="mostrarFormulario">
+    <h3 *ngIf="!editar">Adicionar Pessoa</h3>
+    <h3 *ngIf="editar">Editar Pessoa</h3>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="id" placeholder="Id">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="idade" placeholder="Idade">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="email" placeholder="E-mail">
+        </div>
+        <div class="form-group">
+          <input class="btn btn-success" value="Salvar" (click)="salvar()">
+          <input class="btn btn-danger" style="margin-left:5px;" value="Cancelar" (click)="cancelar()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>Lower Case PIPE</h3>
+    <b>{{ nomeCurso | lowercase }}</b>
+    <h3>Upper Case PIPE</h3>
+    <b>{{ nomeCurso | uppercase }}</b>
+    <br>
+    <br>
+    <br>
+    <h3>Date PIPE</h3>
+    {{ data | date }}
+    <h3>Date-BR PIPE</h3>
+    {{ data | date:"dd/MM/yyyy" }}
+    <h3>Date format PIPE</h3>
+    {{ data | date:format }}
+    {{ data | date:'fullDate' }}
+    <h3>Encadeados PIPE</h3>
+    {{ data | date | uppercase }}
+    {{ data | date:'fullDate' | uppercase }}
+    <h3>Time PIPE</h3>
+    {{ data | date:'shortTime' }}
+    <br>
+    <br>
+    <br>
+    <h3>Time PIPE</h3>
+    <b>{{ 2500.30 }}</b>
+    <h3>Time BRL PIPE</h3>
+    <b>{{ 2500.30 | currency:"BRL"}}</b>
+    <h3>Decimal PIPE</h3>
+    <b>{{123.65465421 | number: '3.4'}}</b>
+    <h3>Percentual PIPE</h3>
+    <b>{{00.54565 | percent}}</b>
+    <br>
+    <br>
+    <br>
+    <h3>Eventos PIPE</h3>
+    {{ data | date:formato }}
+    <button (click)="alterarFormato()">Alterar</button>
+    <br>
+    <br>
+    <br>
+    <h3>Intervalo PIPE</h3>
+    {{ mes | slice:1:4 }}
+    <br>
+    <br>
+    <br>
+    <h3>Personalizado PIPE</h3>
+    {{raiz | pipes}}
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
